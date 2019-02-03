@@ -2,4 +2,4 @@
 csapp book 
 
 # Run
-run Y86Main
+run Y86Main.java
