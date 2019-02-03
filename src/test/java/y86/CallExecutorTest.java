@@ -15,13 +15,13 @@ public class CallExecutorTest{
             increase();
         }
 
-        increase(i){
+        increase(){
             i++;
         }
 
          */
         Y86 y86 = new Y86();
-        String order = "30f1040000000000000032f2010000000000000080680000000000000030f30a0000000000000061137428000000000000000000602190";
+        String order = "30f1040000000000000030f2010000000000000080680000000000000030f30a0000000000000061137428000000000000000000602190";
         while (y86.getPc() != order.length() - 1){
             int pc = (int) y86.getPc();
             byte icode = OrderReader.readHalf(order, pc);
