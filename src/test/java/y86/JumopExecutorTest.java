@@ -17,7 +17,7 @@ public class JumopExecutorTest {
 
          */
         String order = "30f3040000000000000030f40100000000000000604330f50a00000000000000613574280000000000000000";
-        while (y86.getPc() != order.length() - 1){
+        while (y86.getPc() != order.length()){
             int pc = (int) y86.getPc();
             byte icode = OrderReader.readHalf(order, pc);
             execute(y86, order, pc, icode);
