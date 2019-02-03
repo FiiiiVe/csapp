@@ -1,17 +1,35 @@
 package y86;
 
-public class Y86Main {
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class JumopExecutorTest {
     private static boolean isDone = false;
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         Y86 y86 = new Y86();
-        String order = "30f3fcffffffffffffff";
-        int pc = y86.getPc().intValue();
-        byte icode = OrderReader.readHalf(order, 0);
-        execute(y86, order, pc, icode);
-        if (isDone) {
-            System.out.println("Y86 is closed");
+        /*
+        int i = 4;
+        if (i!=10){
+            i ++;
         }
+
+         */
+        String order = "30f3040000000000000030f40100000000000000604330f50a00000000000000613574280000000000000000";
+        while (y86.getPc().intValue() != order.length() - 1){
+            int pc = y86.getPc().intValue();
+            byte icode = OrderReader.readHalf(order, pc);
+            execute(y86, order, pc, icode);
+            if (isDone) {
+                System.out.println("Y86 is closed");
+                break;
+            }
+        }
+
+
+        System.out.println(y86.getRegister()[2]);
     }
 
     public static void execute(Y86 y86, String order, int pc, byte icode) {
@@ -23,6 +41,7 @@ public class Y86Main {
                 new RrmovqExecutor(y86, order.substring(pc, pc + 4));
                 break;
             case 0x3:
+                System.out.println();
                 new IrmovqExecutor(y86, order.substring(pc, pc + 20));
                 break;
             case 0x4:
@@ -41,5 +60,6 @@ public class Y86Main {
                 throw new RuntimeException("wrong order at index : " + pc + ", icode : " + Integer.toHexString(icode));
         }
     }
+
 
 }

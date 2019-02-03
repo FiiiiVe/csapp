@@ -3,6 +3,8 @@ package y86;
 import java.math.BigInteger;
 
 public abstract class Y86Executor {
+    public byte icode;
+    public byte funCode;
     public byte rA;
     public byte rB;
     public BigInteger valP;
