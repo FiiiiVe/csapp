@@ -1,4 +1,4 @@
-package y86;
+package y86.executor;
 
 public class OrderReader {
     public static Long readByte(String order, int start, int length) {

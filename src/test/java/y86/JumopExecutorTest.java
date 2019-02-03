@@ -1,6 +1,7 @@
 package y86;
 
 import org.junit.Test;
+import y86.executor.*;
 
 
 public class JumopExecutorTest {

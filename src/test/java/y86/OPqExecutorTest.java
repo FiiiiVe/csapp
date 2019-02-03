@@ -1,6 +1,8 @@
 package y86;
 
 import org.junit.Test;
+import y86.executor.IrmovqExecutor;
+import y86.executor.OPqExecutor;
 
 
 public class OPqExecutorTest {

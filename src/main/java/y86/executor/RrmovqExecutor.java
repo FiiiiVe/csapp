@@ -1,14 +1,16 @@
-package y86;
+package y86.executor;
 
-import java.math.BigInteger;
+import y86.Y86;
 
-public class MrmovqExecutor extends Y86Executor {
+public class RrmovqExecutor extends Y86Executor {
+
     private Y86 y86;
     private String order;
 
-    public MrmovqExecutor(Y86 y86, String order) {
+    public RrmovqExecutor(Y86 y86, String order) {
         this.y86 = y86;
         this.order = order;
+        this.funCode = OrderReader.readHalf(order, 1);
         execute();
     }
 
@@ -16,16 +18,11 @@ public class MrmovqExecutor extends Y86Executor {
         // 取指
         rA = OrderReader.readHalf(order, 2);
         rB = OrderReader.readHalf(order, 3);
-        valC = OrderReader.readByte(order, 4, 8);
-        valP = y86.getPc() + 20;
+        valP = y86.getPc() + 4;
         // 译码
         valA = y86.getRegister()[rA - 1];
-        // 执行
-        valE = valA + valC;
-        // 访存
-        valM = y86.getMemory().get(valE);
         // 写回
-        y86.getRegister()[rB - 1] = valM;
+        y86.getRegister()[rB - 1] = valA;
         // 更新pc
         y86.setPc(valP);
     }

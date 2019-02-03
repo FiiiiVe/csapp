@@ -1,8 +1,7 @@
 package y86;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import y86.executor.*;
 
 public class CallExecutorTest{
 

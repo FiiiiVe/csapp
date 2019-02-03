@@ -1,4 +1,6 @@
-package y86;
+package y86.executor;
+
+import y86.Y86;
 
 public class RetExecutor extends Y86Executor{
     private Y86 y86;
