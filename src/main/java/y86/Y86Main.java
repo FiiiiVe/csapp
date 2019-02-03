@@ -1,6 +1,6 @@
 package y86;
 
-public class Y86Test {
+public class Y86Main {
     public static void main(String[] args) {
         Y86 y86 = new Y86();
         String order = "30f3fcffffffffffffff";
