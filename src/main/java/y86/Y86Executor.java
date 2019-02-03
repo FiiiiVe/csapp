@@ -7,12 +7,12 @@ public abstract class Y86Executor {
     public byte funCode;
     public byte rA;
     public byte rB;
-    public BigInteger valP;
-    public Long valA;
-    public Long valB;
-    public Long valC;
-    public Long valE;
-    public Long valM;
+    public long valP;
+    public long valA;
+    public long valB;
+    public long valC;
+    public long valE;
+    public long valM;
 
     public abstract void execute();
 

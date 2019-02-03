@@ -12,14 +12,15 @@ public class Y86 {
             memory.put(index, num);
         }
 
+        // TODO handle when index is not 8n
         public Long get(long index) {
             return memory.get(index);
         }
     }
 
     Memory memory = new Memory();
-    BigInteger pc = new BigInteger("0");
-    Long[] register = new Long[16];
+    long pc = 0;
+    long[] register = new long[16];
     Boolean ZF = null;
     Boolean SF = null;
     Boolean OF = null;
@@ -32,19 +33,19 @@ public class Y86 {
         this.memory = memory;
     }
 
-    public BigInteger getPc() {
+    public long getPc() {
         return pc;
     }
 
-    public void setPc(BigInteger pc) {
+    public void setPc(long pc) {
         this.pc = pc;
     }
 
-    public Long[] getRegister() {
+    public long[] getRegister() {
         return register;
     }
 
-    public void setRegister(Long[] register) {
+    public void setRegister(long[] register) {
         this.register = register;
     }
 

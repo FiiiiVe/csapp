@@ -16,7 +16,7 @@ public class IrmovqExecutor extends Y86Executor {
         // 取指
         rA = 0xF;
         rB = OrderReader.readHalf(order, 3);
-        valP = y86.getPc().add(new BigInteger("20"));
+        valP = y86.getPc() + 20;
         valC = OrderReader.readByte(order, 4, 8);
         // 写回
         y86.getRegister()[rB - 1] = valC;

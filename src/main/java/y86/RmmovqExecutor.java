@@ -19,7 +19,7 @@ public class RmmovqExecutor extends Y86Executor {
         rA = OrderReader.readHalf(order, 2);
         rB = OrderReader.readHalf(order, 3);
         valC = OrderReader.readByte(order, 4, 8);
-        valP = y86.getPc().add(new BigInteger("20"));
+        valP = y86.getPc() + 20;
         // 译码
         valA = y86.getRegister()[rA - 1];
         valB = y86.getRegister()[rB - 1];

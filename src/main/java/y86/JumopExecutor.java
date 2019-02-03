@@ -16,11 +16,11 @@ public class JumopExecutor extends Y86Executor{
     public void execute() {
         // 取指
         valC = OrderReader.readByte(order, 2, 8);
-        valP = y86.getPc().add(new BigInteger( "18"));
+        valP = y86.getPc() + 18;
         // 执行
         boolean cnd = cond();
         // 更新pc
-        y86.setPc(cnd ? new BigInteger(valC.toString()) : valP);
+        y86.setPc(cnd ? valC : valP);
     }
 
     private boolean cond() {

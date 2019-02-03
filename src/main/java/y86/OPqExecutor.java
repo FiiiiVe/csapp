@@ -18,7 +18,7 @@ public class OPqExecutor extends Y86Executor {
         // 取指
         rA = OrderReader.readHalf(order, 2);
         rB = OrderReader.readHalf(order, 3);
-        valP = y86.getPc().add(new BigInteger("4"));
+        valP = y86.getPc() + 4;
         // 译码
         valA = y86.getRegister()[rA - 1];
         valB = y86.getRegister()[rB - 1];

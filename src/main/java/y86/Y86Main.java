@@ -6,11 +6,16 @@ public class Y86Main {
     public static void main(String[] args) {
         Y86 y86 = new Y86();
         String order = "30f3fcffffffffffffff";
-        int pc = y86.getPc().intValue();
-        byte icode = OrderReader.readHalf(order, 0);
-        execute(y86, order, pc, icode);
-        if (isDone) {
-            System.out.println("Y86 is closed");
+        while (y86.getPc() != order.length() - 1){
+            // String only support type int
+            // TODO handle the question above
+            int pc = (int) y86.getPc();
+            byte icode = OrderReader.readHalf(order, pc);
+            execute(y86, order, pc, icode);
+            if (isDone) {
+                System.out.println("Y86 is closed");
+                break;
+            }
         }
     }
 
@@ -36,6 +41,18 @@ public class Y86Main {
                 break;
             case 0x7:
                 new JumopExecutor(y86, order.substring(pc, pc + 18));
+                break;
+            case 0x8:
+                new CallExecutor(y86, order.substring(pc, pc + 18));
+                break;
+            case 0x9:
+                new RetExecutor(y86, order.substring(pc, pc + 2));
+                break;
+            case 0xA:
+                new PushqExecutor(y86, order.substring(pc, pc + 4));
+                break;
+            case 0xB:
+                new PopqExecutor(y86, order.substring(pc, pc + 4));
                 break;
             default:
                 throw new RuntimeException("wrong order at index : " + pc + ", icode : " + Integer.toHexString(icode));
